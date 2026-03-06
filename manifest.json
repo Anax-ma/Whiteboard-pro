@@ -9,14 +9,16 @@
   "orientation": "any",
   "icons": [
     {
-      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect fill='%230078d4' width='192' height='192' rx='48'/%3E%3Cpath fill='%23fff' d='M48 64h96v8H48zm0 24h96v8H48zm0 24h64v8H48z'/%3E%3C/svg%3E",
+      "src": "icon-192x192.png",
       "sizes": "192x192",
-      "type": "image/svg+xml"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect fill='%230078d4' width='512' height='512' rx='128'/%3E%3Cpath fill='%23fff' d='M128 170h256v20H128zm0 64h256v20H128zm0 64h192v20H128z'/%3E%3C/svg%3E",
+      "src": "icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/svg+xml"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "categories": ["productivity", "graphics", "education"],

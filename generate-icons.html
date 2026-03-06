@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Icon Generator</title>
+</head>
+<body>
+    <h1>Generating Icons...</h1>
+    <canvas id="canvas192" width="192" height="192" style="display:none;"></canvas>
+    <canvas id="canvas512" width="512" height="512" style="display:none;"></canvas>
+    
+    <div id="downloads"></div>
+
+    <script>
+        function createIcon(size) {
+            const canvas = document.getElementById(`canvas${size}`);
+            const ctx = canvas.getContext('2d');
+            
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#0078d4');
+            gradient.addColorStop(0.5, '#00a8e8');
+            gradient.addColorStop(1, '#00d4ff');
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // White rounded rectangle (paper effect)
+            const padding = size * 0.15;
+            const paperWidth = size - (padding * 2);
+            const paperHeight = size - (padding * 2);
+            const radius = size * 0.08;
+            
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.moveTo(padding + radius, padding);
+            ctx.lineTo(padding + paperWidth - radius, padding);
+            ctx.quadraticCurveTo(padding + paperWidth, padding, padding + paperWidth, padding + radius);
+            ctx.lineTo(padding + paperWidth, padding + paperHeight - radius);
+            ctx.quadraticCurveTo(padding + paperWidth, padding + paperHeight, padding + paperWidth - radius, padding + paperHeight);
+            ctx.lineTo(padding + radius, padding + paperHeight);
+            ctx.quadraticCurveTo(padding, padding + paperHeight, padding, padding + paperHeight - radius);
+            ctx.lineTo(padding, padding + radius);
+            ctx.quadraticCurveTo(padding, padding, padding + radius, padding);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Draw lines on paper
+            ctx.strokeStyle = '#e0e0e0';
+            ctx.lineWidth = size * 0.006;
+            const lineSpacing = size * 0.08;
+            const lineStart = padding + (size * 0.06);
+            const lineEnd = padding + paperWidth - (size * 0.06);
+            
+            for (let i = 0; i < 5; i++) {
+                const y = padding + (size * 0.15) + (i * lineSpacing);
+                ctx.beginPath();
+                ctx.moveTo(lineStart, y);
+                ctx.lineTo(lineEnd, y);
+                ctx.stroke();
+            }
+            
+            // Draw pen icon
+            const penX = size * 0.65;
+            const penY = size * 0.6;
+            const penSize = size * 0.25;
+            
+            // Pen body
+            ctx.fillStyle = '#0078d4';
+            ctx.beginPath();
+            ctx.moveTo(penX, penY);
+            ctx.lineTo(penX + penSize * 0.15, penY + penSize * 0.8);
+            ctx.lineTo(penX - penSize * 0.15, penY + penSize * 0.8);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Pen tip
+            ctx.fillStyle = '#005a9e';
+            ctx.beginPath();
+            ctx.moveTo(penX, penY + penSize * 0.8);
+            ctx.lineTo(penX + penSize * 0.1, penY + penSize * 0.95);
+            ctx.lineTo(penX - penSize * 0.1, penY + penSize * 0.95);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Pen clip
+            ctx.strokeStyle = '#00d4ff';
+            ctx.lineWidth = size * 0.01;
+            ctx.beginPath();
+            ctx.arc(penX, penY + penSize * 0.3, penSize * 0.08, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            return canvas.toDataURL('image/png');
+        }
+
+        // Generate both icons
+        const icon192 = createIcon(192);
+        const icon512 = createIcon(512);
+        
+        // Create download links
+        const downloads = document.getElementById('downloads');
+        
+        const link192 = document.createElement('a');
+        link192.href = icon192;
+        link192.download = 'icon-192x192.png';
+        link192.textContent = 'Download 192x192 Icon';
+        link192.style.display = 'block';
+        link192.style.margin = '10px';
+        link192.style.padding = '10px 20px';
+        link192.style.background = '#0078d4';
+        link192.style.color = 'white';
+        link192.style.textDecoration = 'none';
+        link192.style.borderRadius = '5px';
+        link192.style.width = '200px';
+        link192.style.textAlign = 'center';
+        
+        const link512 = document.createElement('a');
+        link512.href = icon512;
+        link512.download = 'icon-512x512.png';
+        link512.textContent = 'Download 512x512 Icon';
+        link512.style.display = 'block';
+        link512.style.margin = '10px';
+        link512.style.padding = '10px 20px';
+        link512.style.background = '#0078d4';
+        link512.style.color = 'white';
+        link512.style.textDecoration = 'none';
+        link512.style.borderRadius = '5px';
+        link512.style.width = '200px';
+        link512.style.textAlign = 'center';
+        
+        downloads.appendChild(link192);
+        downloads.appendChild(link512);
+        
+        // Show preview
+        const preview192 = document.createElement('img');
+        preview192.src = icon192;
+        preview192.style.width = '192px';
+        preview192.style.margin = '10px';
+        preview192.style.border = '2px solid #ddd';
+        
+        const preview512 = document.createElement('img');
+        preview512.src = icon512;
+        preview512.style.width = '192px';
+        preview512.style.margin = '10px';
+        preview512.style.border = '2px solid #ddd';
+        
+        downloads.appendChild(document.createElement('br'));
+        downloads.appendChild(preview192);
+        downloads.appendChild(preview512);
+        
+        // Auto-download
+        link192.click();
+        setTimeout(() => link512.click(), 500);
+        
+        document.querySelector('h1').textContent = 'Icons Generated! Click links to download if they didn\'t auto-download.';
+    </script>
+</body>
+</html>
