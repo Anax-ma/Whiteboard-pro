@@ -1,0 +1,31 @@
+{
+  "name": "لوحة بيضاء احترافية - Pro Whiteboard",
+  "short_name": "Whiteboard Pro",
+  "description": "لوحة بيضاء احترافية متقدمة للرسم والتصميم والملاحظات",
+  "start_url": "/pro-whiteboard-advanced",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0078d4",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "productivity",
+    "graphics",
+    "education"
+  ],
+  "lang": "ar",
+  "dir": "rtl"
+}
