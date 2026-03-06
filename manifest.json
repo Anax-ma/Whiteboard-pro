@@ -2,7 +2,7 @@
   "name": "لوحة بيضاء احترافية - Pro Whiteboard",
   "short_name": "Whiteboard Pro",
   "description": "لوحة بيضاء احترافية متقدمة للرسم والتصميم والملاحظات",
-  "start_url": "/pro-whiteboard-advanced.html",
+  "start_url": "/pro-whiteboard-advanced",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0078d4",
@@ -21,7 +21,11 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["productivity", "graphics", "education"],
+  "categories": [
+    "productivity",
+    "graphics",
+    "education"
+  ],
   "lang": "ar",
   "dir": "rtl"
 }
